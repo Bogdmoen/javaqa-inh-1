@@ -24,8 +24,11 @@ public class ProductManagerTest {
     private Book book1 = new Book(1, "book1", 100, "author1");
     private Book book2 = new Book(2, "book2", 100, "author1");
     private Book book3 = new Book(3, "book3", 100, "author2");
-    private SmartPhone phone1 = new SmartPhone(4, "phone1", 100, "author1");
-    private SmartPhone phone2 = new SmartPhone(5, "phone1", 100, "author2");
+    private Book book4 = new Book(4, "Nokia", 100, "author2");
+    private SmartPhone phone1 = new SmartPhone(5, "phone1", 100, "author1");
+    private SmartPhone phone2 = new SmartPhone(6, "phone1", 100, "author2");
+    private SmartPhone phone3 = new SmartPhone(7, "Nokia", 100, "Nokia");
+
 
     @Test
     public void shouldSearchBy() {
@@ -59,6 +62,19 @@ public class ProductManagerTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldSearchByFindName() {
+        Product [] returned = new Product[] {book1, book2, book3, book4, phone1, phone2, phone3};
+        doReturn(returned).when(repository).findAll();
+
+        Product[] expected = new Product[] {book4, phone3};
+        Product[] actual = manager.searchBy("Nokia");
+
+        assertArrayEquals(expected, actual);
+    }
+
+
 
 
 
