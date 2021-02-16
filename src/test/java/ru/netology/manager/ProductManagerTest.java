@@ -1,4 +1,4 @@
-package ru.netology.namager;
+package ru.netology.manager;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,9 +73,4 @@ public class ProductManagerTest {
 
         assertArrayEquals(expected, actual);
     }
-
-
-
-
-
 }

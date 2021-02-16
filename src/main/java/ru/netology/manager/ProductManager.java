@@ -1,4 +1,4 @@
-package ru.netology.namager;
+package ru.netology.manager;
 
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
@@ -16,12 +16,11 @@ public class ProductManager {
     }
 
     public Product[] searchBy (String text) {
-        Product [] products = getAll();
         Product[] tmp;
         Product[] result = new Product[0];
         int index = 1;
 
-        for (Product product : products) {
+        for (Product product : getAll()) {
             boolean ifMatch = matches(product, text);
             if (ifMatch) {
                 tmp = new Product[index];
@@ -58,6 +57,4 @@ public class ProductManager {
          }
         return false;
     }
-
-
 }
